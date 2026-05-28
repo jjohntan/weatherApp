@@ -1,6 +1,7 @@
 // get the first element from the document
 const weatherForm = document.querySelector('.weatherForm');
 const inputCity = document.querySelector('.cityInput');
+const card = document.querySelector('.card');
 // console.log(weatherForm);
 // console.log(inputCity);
 
@@ -50,15 +51,52 @@ function displayWeatherInfo(data){
     const summaryForecast = weatherRecord.summary_forecast;
     const summaryWhen = weatherRecord.summary_when;
     const minTemp = weatherRecord.min_temp;
-    const maxTmep = weatherRecord.max_temp;
+    const maxTemp = weatherRecord.max_temp;
 
+    // clear the card
+    card.textcontent = "";
+    card.style.display = "flex";
 
-    console.log(`City name: ${cityName}`);
-    console.log(`Morning forecast: ${morningForecast}`);
-    console.log(`AfternoonForecast forecast: ${afternoonForecast}`);
-    console.log(`Night forecast: ${nightForecast}`);
-    console.log(`summary forecast: ${summaryForecast}`);
-    console.log(`Summary when: ${summaryWhen}`);
-    console.log(`Min temperature: ${minTemp}`);
-    console.log(`Max temperature: ${maxTmep}`);
+    // create new element
+    const _cityName = document.createElement("h1");
+    _cityName.textContent = cityName;
+    _cityName.classList.add("cityDisplay");
+
+    const _morningForecast = document.createElement("p");
+    _morningForecast.textContent = morningForecast;
+    _morningForecast.classList.add("morningDisplay");
+
+    const _afternoonForecast = document.createElement("p");
+    _afternoonForecast.textContent = afternoonForecast;
+    _afternoonForecast.classList.add("afternoonDisplay");
+
+    const _nightForecast = document.createElement("p");
+    _nightForecast.textContent = nightForecast;
+    _nightForecast.classList.add("nightDisplay");
+
+    const _summaryForecast = document.createElement("p");
+    _summaryForecast.textContent = summaryForecast;
+    _summaryForecast.classList.add("summaryForecast");
+
+    const _summaryWhen = document.createElement("p");
+    _summaryWhen.textContent = summaryWhen;
+    _summaryWhen.classList.add("summaryWhen");
+
+    const _minTemp = document.createElement("p");
+    _minTemp.textContent = minTemp;
+    _minTemp.classList.add("minTemp");
+
+     const _maxTemp = document.createElement("p");
+    _maxTemp.textContent = maxTemp;
+    _maxTemp.classList.add("maxTemp");
+    
+    // append information to the card
+    card.appendChild(_cityName);
+    card.appendChild(_morningForecast);
+    card.appendChild(_afternoonForecast);
+    card.appendChild(_nightForecast);
+    card.appendChild(_summaryForecast);
+    card.appendChild(_summaryWhen);
+    card.appendChild(_minTemp);
+    card.appendChild(_maxTemp);
 }
