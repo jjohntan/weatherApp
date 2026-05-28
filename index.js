@@ -12,11 +12,16 @@ weatherForm.addEventListener('submit', async event => {
     const city = inputCity.value;
     // console.log(city);
     if (!city){
-        console.log('Errorrrrrrrrrrrr');
+        console.error('Errorrrrrrrrrrrr');
     }
     else{
-        const weatherData = await getWeatherData(city);
-        displayWeatherInfo(weatherData);
+        try{
+            const weatherData = await getWeatherData(city);
+            displayWeatherInfo(weatherData);
+        }
+        catch{
+            console.error("Error");
+        }
     }
 });
 
@@ -36,7 +41,7 @@ async function getWeatherData(city){
 function displayWeatherInfo(data){
     
     if (!data || data.length === 0){
-        console.log(`Errorrrrr data not found`);
+        console.error(`Errorrrrr data not found`);
         return;
     }
 
@@ -63,31 +68,31 @@ function displayWeatherInfo(data){
     _cityName.classList.add("cityDisplay");
 
     const _morningForecast = document.createElement("p");
-    _morningForecast.textContent = morningForecast;
+    _morningForecast.textContent = `Morning: ${morningForecast}`;
     _morningForecast.classList.add("morningDisplay");
 
     const _afternoonForecast = document.createElement("p");
-    _afternoonForecast.textContent = afternoonForecast;
+    _afternoonForecast.textContent = `Afternoon: ${afternoonForecast}`;
     _afternoonForecast.classList.add("afternoonDisplay");
 
     const _nightForecast = document.createElement("p");
-    _nightForecast.textContent = nightForecast;
+    _nightForecast.textContent = `Night: ${nightForecast}`;
     _nightForecast.classList.add("nightDisplay");
 
     const _summaryForecast = document.createElement("p");
-    _summaryForecast.textContent = summaryForecast;
+    _summaryForecast.textContent = `Summary forecast: ${summaryForecast}`;
     _summaryForecast.classList.add("summaryForecast");
 
     const _summaryWhen = document.createElement("p");
-    _summaryWhen.textContent = summaryWhen;
+    _summaryWhen.textContent = `Summary when: ${summaryWhen}`;
     _summaryWhen.classList.add("summaryWhen");
 
     const _minTemp = document.createElement("p");
-    _minTemp.textContent = minTemp;
+    _minTemp.textContent = `Minimum temperature: ${minTemp}°C`;
     _minTemp.classList.add("minTemp");
 
      const _maxTemp = document.createElement("p");
-    _maxTemp.textContent = maxTemp;
+    _maxTemp.textContent = `Maximum temperature: ${maxTemp}°C`;
     _maxTemp.classList.add("maxTemp");
     
     // append information to the card
