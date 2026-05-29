@@ -12,7 +12,7 @@ weatherForm.addEventListener('submit', async event => {
     const city = inputCity.value;
     // console.log(city);
     if (!city){
-        console.error('Errorrrrrrrrrrrr');
+        console.error('Error');
     }
     else{
         try{
@@ -41,7 +41,7 @@ async function getWeatherData(city){
 function displayWeatherInfo(data){
     
     if (!data || data.length === 0){
-        console.error(`Errorrrrr data not found`);
+        console.error(`Error API data not found`);
         return;
     }
 
