@@ -63,6 +63,10 @@ function displayWeatherInfo(data){
     card.style.display = "flex";
 
     // create new element
+    const _weatherEmoji = document.createElement("h1");
+    _weatherEmoji.textContent = getWeatherEmoji(summaryForecast);
+    _weatherEmoji.classList.add("weatherEmoji");
+
     const _cityName = document.createElement("h1");
     _cityName.textContent = cityName;
     _cityName.classList.add("cityDisplay");
@@ -96,6 +100,7 @@ function displayWeatherInfo(data){
     _maxTemp.classList.add("maxTemp");
     
     // append information to the card
+    card.appendChild(_weatherEmoji);
     card.appendChild(_cityName);
     card.appendChild(_morningForecast);
     card.appendChild(_afternoonForecast);
@@ -104,4 +109,21 @@ function displayWeatherInfo(data){
     card.appendChild(_summaryWhen);
     card.appendChild(_minTemp);
     card.appendChild(_maxTemp);
+}
+
+function getWeatherEmoji(weather){
+    switch(true){
+        case (weather === "Tiada hujan"):
+            return "🌞";
+        case (weather === "Hujan" || weather === "Hujan di beberapa tempat"
+             || weather === "Hujan di satu dua tempat" || weather === "Hujan di satu dua tempat di kawasan pantai"
+              || weather === "Hujan di satu dua tempat di kawasan pedalaman"):
+            return "🌧️";
+        case (weather === "Ribut petir" || weather === "Ribut petir di beberapa tempat"):
+            return "⛈️";
+        case (weather === "Ribut petir di satu dua tempat" || weather === "Ribut petir di beberapa tempat"):
+            return "🌩️";
+        case(weather === "Mendung"):
+            return "☁️";
+    }
 }
