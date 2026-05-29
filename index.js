@@ -59,7 +59,7 @@ function displayWeatherInfo(data){
     const maxTemp = weatherRecord.max_temp;
 
     // clear the card
-    card.textcontent = "";
+    card.textContent = "";
     card.style.display = "flex";
 
     // create new element
